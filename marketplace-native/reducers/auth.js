@@ -133,6 +133,7 @@ switch (action.type) {
           error: action.payload,
         }
       case GUEST_SUCCESS:
+      console.log(action);
         return {
           ...state,
           error: false,

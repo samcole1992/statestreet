@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { CALL_API } from 'redux-api-middleware'
+import { RSAA } from 'redux-api-middleware'
 
 import {
 
@@ -38,9 +38,9 @@ SHOW_USER_FAILURE
 } from '../constants';
 
 export function showUser(token) {
-	let locale  = I18n.locale
+
 	return {
-		[CALL_API]: {
+		[RSAA]: {
 			endpoint: `${BASE_URL}/user`,
 			method: 'GET',
 			headers: {
@@ -56,10 +56,10 @@ export function showUser(token) {
 }
 
 export function updateUser(body, token) {
-	let locale  = I18n.locale
+
 
 	return {
-		[CALL_API]:{
+		[RSAA]:{
 			endpoint:`${BASE_URL}/user`,
 			method:'PATCH',
 			types:[
@@ -138,10 +138,9 @@ export function getTokenFailure(payload) {
 
 export function fetchGuest() {
 	console.log('guest was called');
-	let locale  = I18n.locale
 
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `${BASE_URL}/guest`,
       method: 'POST',
       types: [
@@ -155,12 +154,12 @@ export function fetchGuest() {
 }
 
 export function signup(email, guestToken) {
-	let locale  = I18n.locale
+
 	if (locale.length>2) {
 		locale=locale.slice(0,2)
 	}
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `${BASE_URL}/signup`,
       method: 'POST',
       types: [
@@ -178,10 +177,10 @@ export function signup(email, guestToken) {
 }
 
 export function signin(email, password, token) {
-	let locale  = I18n.locale
+
 
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `${BASE_URL}/signin`,
       method: 'POST',
       types: [
@@ -202,10 +201,10 @@ export function signin(email, password, token) {
 }
 
 export function signout(token) {
-	let locale  = I18n.locale
+
 
   return {
-    [CALL_API]: {
+    [RSAA]: {
       endpoint: `${BASE_URL}/signout`,
       method: 'DELETE',
       types: [

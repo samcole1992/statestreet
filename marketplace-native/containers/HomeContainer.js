@@ -28,6 +28,7 @@ class HomeContainer extends Component {
     if( !response ) {
       this.props.fetchGuest()
       .then((response) => {
+        console.log(response);
         AsyncStorage.setItem('marketplaceGuestToken', response.payload.token)
         .then(() => {
           this.props.getGuestToken()

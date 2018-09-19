@@ -8,8 +8,7 @@ import {Text, Button, AsyncStorage, View, Image} from 'react-native';
 import {submit, reset} from 'redux-form'
 import ErrorMessage from '../components/ErrorMessage'
 import Link from '../components/Link'
-import IconLink from '../components/IconLink'
-import I18n from '../i18n'
+
 
 class BuyerSignupContainer extends Component {
   //some of this needs to be changed for iOs
@@ -30,8 +29,6 @@ class BuyerSignupContainer extends Component {
     const {navigate} = this.props.navigation
     navigate('BuyerSigninContainer')
   }
-
-
 
 
   onContinueClick = () => {
