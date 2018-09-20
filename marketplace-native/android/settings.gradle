@@ -1,0 +1,3 @@
+rootProject.name = 'marketplaceNative'
+
+include ':app'

@@ -12,7 +12,7 @@ import WelcomeContainer from './containers/WelcomeContainer';
 
 
 export const createRootNavigator = (signedIn, userType) => {
-    console.log(signedIn);
+    console.log('signedIn');
     if(signedIn && userType=='buyer'){
       return createTabNavigator(StackNavigator(routes, {initialRouteName: 'MyBidsContainer'}))
     }
@@ -36,6 +36,9 @@ const routes = {
   },
   SupplierSigninContainer: {
     screen: SupplierSigninContainer
+  },
+  WelcomeContainer: {
+    screen: WelcomeContainer
   },
   SupplierSignupContainer: {
     screen: SupplierSignupContainer

@@ -141,7 +141,7 @@ export function fetchGuest() {
 
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/guest`,
+      endpoint: `http://10.0.0.35:3000/guest`,
       method: 'POST',
       types: [
         AUTHENTICATING,GUEST_SUCCESS,GUEST_FAILURE
@@ -152,12 +152,27 @@ export function fetchGuest() {
     }
   }
 }
+export function supplierSignup(email, guestToken) {
 
-export function signup(email, guestToken) {
+  return {
+    [RSAA]: {
+      endpoint: `${BASE_URL}/signup`,
+      method: 'POST',
+      types: [
+        AUTHENTICATING,SIGNUP_SUCCESS,SIGNUP_FAILURE
+      ],
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${guestToken}`
+      },
+      body: JSON.stringify({
+				user: email
+      })
+    }
+  }
+}
+export function buyerSignup(email, guestToken) {
 
-	if (locale.length>2) {
-		locale=locale.slice(0,2)
-	}
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/signup`,

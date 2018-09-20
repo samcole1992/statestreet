@@ -11,6 +11,7 @@ class HomeContainer extends Component {
   componentDidMount() {
     AsyncStorage.getItem('marketplaceToken')
     .then((response) => {
+      console.log(response);
       this.handleAuth(response)
     })
   }

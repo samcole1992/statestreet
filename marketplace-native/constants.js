@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://107.77.223.35:3000'
+export const BASE_URL = 'http://localhost:3000'
 
 export const UPDATING_USER = 'UPDATING_USER'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'

@@ -72,7 +72,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    supplierSignup: bindActionCreators(signup, dispatch)
+    supplierSignup: bindActionCreators(supplierSignup, dispatch)
   }
 }
 

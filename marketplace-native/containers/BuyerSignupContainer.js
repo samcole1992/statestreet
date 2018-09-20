@@ -52,7 +52,7 @@ class BuyerSignupContainer extends Component {
     return(
       <View>
         { signuperror }
-        <BuyerSignup onSubmit={ this.handleSubmit } authenticating={this.props.authenticating} toPrint={this.toPrint()} onSignInClick={this.onSignInClick} onContinueClick={this.onContinueClick} documentType={this.props.documentType} onDataProcessingInfoClick={this.onDataProcessingInfoClick}/>
+        <BuyerSignup onSubmit={ this.handleSubmit } authenticating={this.props.authenticating} onSignInClick={this.onSignInClick} onContinueClick={this.onContinueClick}/>
       </View>
     )
   }
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    buyerSignup: bindActionCreators(signup, dispatch)
+    buyerSignup: bindActionCreators(buyerSignup, dispatch)
   }
 }
 
