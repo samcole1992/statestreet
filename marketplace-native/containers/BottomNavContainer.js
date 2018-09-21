@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
-
+import {
+  AsyncStorage
+} from 'react-native';
+import { signout } from '../actions/auth'
 import { createBid } from '../actions/bids'
 import { createOffer } from '../actions/offers'
 
@@ -17,35 +20,53 @@ class BottomNavContainer extends Component {
   newItem = () => {
     console.log('newItem');
 
-      let billTo = ''
-      if (this.props.currentCustomer) {
-        billTo = this.props.currentCustomer.attributes.name_1
+      if (this.props.userType=="buyer") {
+        this.props.createBid(this.props.token)
+        .then(() => {
+          this.props.navigation.navigate('BidDetailContainer')
+        })
       }
-      console.log(billTo);
-      console.log(this.props.currentCustomer);
-     this.props.createBid(this.props.token)
-     .then(() => {
-       this.props.navigation.navigate('ItemDetailContainer')
-     })
-
+      else {
+        this.props.createOffer(this.props.token)
+        .then(() => {
+          this.props.navigation.navigate('OfferDetailContainer')
+        })
+      }
   }
 
-  toDocuments = () => {
-    this.props.clearCustomer()
-    this.props.navigation.navigate('ItemMenuContainer')
+  toUserItems = () => {
+    if (this.props.userType=="buyer") {
+        this.props.navigation.navigate('BuyerIndexBidsContainer')
+    }
+    else {
+      this.props.navigation.navigate('SupplierIndexOffersContainer')
+    }
   }
 
-  toCustomers = () => {
-    this.props.navigation.navigate('CustomerMenuContainer')
+  toAllItems = () => {
+    if (this.props.userType=="buyer") {
+        this.props.navigation.navigate('BuyerIndexOffersContainer')
+    }
+    else {
+      this.props.navigation.navigate('SupplierIndexBidsContainer')
+
+    }
   }
+  onSignoutClick = () => {
+  console.log('onSignoutClick');
+  AsyncStorage.removeItem('marketplaceToken')
+  this.props.signout(this.props.token)
+}
 
   render() {
     return (
        <BottomNav
         creating={this.props.creatingItem}
         newItem={this.newItem}
-        toDocuments={this.toDocuments}
-        toCustomers={this.toCustomers}
+        toUserItems={this.toUserItems}
+        toAllItems={this.toAllItems}
+        signout = {this.signout}
+        userType = {this.props.userType}
       />
     )
   }
@@ -53,7 +74,9 @@ class BottomNavContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    userType: state.auth.userType,
+
   }
 }
 
@@ -62,6 +85,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     createBid: bindActionCreators(createBid, dispatch),
     createOffer: bindActionCreators(createOffer, dispatch),
+    signout: bindActionCreators(signout, dispatch)
 
   }
 }

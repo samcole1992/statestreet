@@ -8,16 +8,18 @@ import BuyerSigninContainer from './containers/BuyerSigninContainer';
 import BuyerSignupContainer from './containers/BuyerSignupContainer';
 import SupplierSigninContainer from './containers/SupplierSigninContainer';
 import SupplierSignupContainer from './containers/SupplierSignupContainer';
+import BuyerIndexBidsContainer from './containers/BuyerIndexBidsContainer';
+import SupplierIndexOffersContainer from './containers/SupplierIndexOffersContainer';
 import WelcomeContainer from './containers/WelcomeContainer';
 
 
 export const createRootNavigator = (signedIn, userType) => {
-    console.log('signedIn');
+    console.log(signedIn);
     if(signedIn && userType=='buyer'){
-      return createTabNavigator(StackNavigator(routes, {initialRouteName: 'MyBidsContainer'}))
+      return createTabNavigator(StackNavigator(routes, {initialRouteName: 'BuyerIndexBidsContainer'}))
     }
     else if (signedIn && userType=='supplier') {
-      return createTabNavigator(StackNavigator(routes, {initialRouteName: 'MyOffersContainer'}))
+      return createTabNavigator(StackNavigator(routes, {initialRouteName: 'SupplierIndexOffersContainer'}))
 
     }
     else {
@@ -34,11 +36,17 @@ const routes = {
   BuyerSignupContainer: {
     screen: BuyerSignupContainer
   },
-  SupplierSigninContainer: {
-    screen: SupplierSigninContainer
+  BuyerIndexBidsContainer: {
+    screen: BuyerIndexBidsContainer
+  },
+  SupplierIndexOffersContainer: {
+    screen: SupplierIndexOffersContainer
   },
   WelcomeContainer: {
     screen: WelcomeContainer
+  },
+  SupplierSigninContainer: {
+    screen: SupplierSigninContainer
   },
   SupplierSignupContainer: {
     screen: SupplierSignupContainer

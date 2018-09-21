@@ -54,7 +54,7 @@ class HomeContainer extends Component {
 
         return(
           <View style={{flexDirection: 'column',justifyContent: 'center',alignItems: 'center',height: '100%'}}>
-
+            <Loading/>
           </View>
         )
 

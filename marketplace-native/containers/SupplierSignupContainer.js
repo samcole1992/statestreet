@@ -22,7 +22,6 @@ class SupplierSignupContainer extends Component {
 
   componentDidMount() {
     this.props.navigation.setParams({dispatch: this.props.dispatch})
-    this.props.navigation.setParams({buttonText:this.continueText()})
   }
 
   onSignInClick = () => {
@@ -52,7 +51,7 @@ class SupplierSignupContainer extends Component {
     return(
       <View>
         { signuperror }
-        <SupplierSignup onSubmit={ this.handleSubmit } authenticating={this.props.authenticating} toPrint={this.toPrint()} onSignInClick={this.onSignInClick} onContinueClick={this.onContinueClick}/>
+        <SupplierSignup onSubmit={ this.handleSubmit } authenticating={this.props.authenticating}  onSignInClick={this.onSignInClick} onContinueClick={this.onContinueClick}/>
       </View>
     )
   }

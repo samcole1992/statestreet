@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import {List, ListItem} from 'react-native-elements'
+import {List, ListItem,Button} from 'react-native-elements'
 import { View, TouchableOpacity,Text, ActivityIndicator } from 'react-native';
 import styles from '../styles'
 
@@ -14,19 +14,22 @@ onSupplierClick
   return(
 
     <View style={{padding: 6, flex: 3}} >
-    <TouchableOpacity testID="BuyerButton" onPress={()=>onBuyerClick()}>
 
-       <Text style={{textAlign: 'center'}}>
-        Buyer
-       </Text>
-    </TouchableOpacity>
+    <Button
+    testID="BuyerButton"
+    title='Buyer'
+    onPress={()=>onBuyerClick()}
+    buttonStyle={{ backgroundColor: 'rgba(111, 202, 186, 1)', borderRadius: 5 }}
+    />
 
-    <TouchableOpacity testID="SupplierButton" onPress={()=>onSupplierClick()}>
 
-       <Text style={{textAlign: 'center'}}>
-        Supplier
-       </Text>
-    </TouchableOpacity>
+    <Button
+    testID="SupplierButton"
+    title='Supplier'
+    onPress={()=>onSupplierClick()}
+    buttonStyle={{ backgroundColor: 'rgba(111, 0, 186, 1)', borderRadius: 5 }}
+
+    />
       </View>
     )
 }

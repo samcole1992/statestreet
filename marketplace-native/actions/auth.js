@@ -141,7 +141,7 @@ export function fetchGuest() {
 
   return {
     [RSAA]: {
-      endpoint: `http://10.0.0.35:3000/guest`,
+      endpoint: `${BASE_URL}/guest`,
       method: 'POST',
       types: [
         AUTHENTICATING,GUEST_SUCCESS,GUEST_FAILURE
@@ -156,7 +156,7 @@ export function supplierSignup(email, guestToken) {
 
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/signup`,
+      endpoint: `${BASE_URL}/supplier_signup`,
       method: 'POST',
       types: [
         AUTHENTICATING,SIGNUP_SUCCESS,SIGNUP_FAILURE
@@ -166,7 +166,7 @@ export function supplierSignup(email, guestToken) {
         'Authorization': `Bearer ${guestToken}`
       },
       body: JSON.stringify({
-				user: email
+				supplier: email
       })
     }
   }
@@ -175,7 +175,7 @@ export function buyerSignup(email, guestToken) {
 
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/signup`,
+      endpoint: `${BASE_URL}/buyer_signup`,
       method: 'POST',
       types: [
         AUTHENTICATING,SIGNUP_SUCCESS,SIGNUP_FAILURE
@@ -185,18 +185,18 @@ export function buyerSignup(email, guestToken) {
         'Authorization': `Bearer ${guestToken}`
       },
       body: JSON.stringify({
-				user: email
+				buyer: email
       })
     }
   }
 }
 
-export function signin(email, password, token) {
+export function buyerSignin(email, password, token) {
 
 
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/signin`,
+      endpoint: `${BASE_URL}/buyer_signin`,
       method: 'POST',
       types: [
         AUTHENTICATING,SIGNIN_SUCCESS,SIGNIN_FAILURE
@@ -206,7 +206,7 @@ export function signin(email, password, token) {
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-				user: {
+				buyer: {
           email,
           password
         },

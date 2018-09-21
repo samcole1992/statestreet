@@ -53,18 +53,20 @@ switch (action.type) {
 
     case AUTHENTICATING:
       return {
-        //FIXME: ...state overwriting authenticating, so this doesnt really do anything?
         ...state,
         authenticating: true
       }
     case SIGNUP_SUCCESS:
+    console.log(action);
       return {
         ...state,
         error: false,
         authenticating: false,
         isAuthenticated: true,
-        token: action.payload.data.attributes.token,
+        token: action.payload.meta.token,
         currentUser: action.payload.data,
+        userType: action.payload.data.type
+
       }
     case SIGNUP_FAILURE:
     console.log(action);
@@ -77,11 +79,12 @@ switch (action.type) {
     case SIGNIN_SUCCESS:
       return {
         ...state,
-        authenticating: false,
         error: false,
+        authenticating: false,
         isAuthenticated: true,
-        token: action.payload.data.attributes.token,
+        token: action.payload.meta.token,
         currentUser: action.payload.data,
+        userType: action.payload.data.type
       }
     case SIGNIN_FAILURE:
       return {

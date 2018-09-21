@@ -22,7 +22,6 @@ class BuyerSignupContainer extends Component {
 
   componentDidMount() {
     this.props.navigation.setParams({dispatch: this.props.dispatch})
-    this.props.navigation.setParams({buttonText:this.continueText()})
   }
 
   onSignInClick = () => {
@@ -37,6 +36,7 @@ class BuyerSignupContainer extends Component {
 
   handleSubmit = (values) => {
     //Some sort of async validation will happen here too
+    console.log(values);
     this.props.buyerSignup(values, this.props.token)
     .then((response) => {
       console.log(response);
