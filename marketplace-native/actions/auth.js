@@ -215,12 +215,27 @@ export function buyerSignin(email, password, token) {
   }
 }
 
-export function signout(token) {
-
+export function buyer_signout(token) {
 
   return {
     [RSAA]: {
-      endpoint: `${BASE_URL}/signout`,
+      endpoint: `${BASE_URL}/buyer_signout`,
+      method: 'DELETE',
+      types: [
+        AUTHENTICATING,SIGNOUT_SUCCESS,SIGNOUT_FAILURE
+      ],
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    }
+  }
+}
+export function supplier_signout(token) {
+
+  return {
+    [RSAA]: {
+      endpoint: `${BASE_URL}/supplier_signout`,
       method: 'DELETE',
       types: [
         AUTHENTICATING,SIGNOUT_SUCCESS,SIGNOUT_FAILURE

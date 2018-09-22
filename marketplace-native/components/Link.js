@@ -8,9 +8,11 @@ export const Link = (props) => {
 
 
   return (
-    <TouchableOpacity onPress={()=>props.onPress()}>
+    <View style={{flex: .25}} >
+    <TouchableOpacity onPress={props.onPress}>
       <Text style={ styles.androidLink}>{props.text}</Text>
     </TouchableOpacity>
+    </View>
   )
 
 

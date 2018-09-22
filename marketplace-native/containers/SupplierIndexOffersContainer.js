@@ -27,7 +27,8 @@ import DeviceInfo from 'react-native-device-info';
 class SupplierIndexOffersContainer extends Component {
 
   static navigationOptions = ({navigation}) => ({
-  })
+      headerTitle: 'My Offers'
+    })
 
     componentDidMount() {
 
@@ -49,7 +50,7 @@ class SupplierIndexOffersContainer extends Component {
   //   this.props.searchOffers(values.term, this.props.token)
   // }
 
-  selectOffer = (offers, index) => {
+  selectOffer = (offer, index) => {
     const {navigate} = this.props.navigation
     console.log(this.props.offers);
     this.props.selectOffer(offer, index) //save offer to redux for future use

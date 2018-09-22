@@ -7,12 +7,7 @@ import Link from './Link'
 import styles from '../styles'
 
 const BottomNav = ({newItem, toUserItems, toAllItems, creating, signout, userType}) => {
-    const spinner = (
-      <View style={{padding: 6, flex: 3}} >
-        <ActivityIndicator size="small" color="#dbdbdb" />
-      </View>
-    )
-    const newButton = <NewButton handlePress={newItem}/>
+
     let myDocs
     let allDocs
     if (userType=='buyer') {
@@ -24,8 +19,8 @@ const BottomNav = ({newItem, toUserItems, toAllItems, creating, signout, userTyp
       allDocs = <Link text= "Open Bids" onPress={toAllItems}/>
     }
     return (
-      <View style={styles.navContainer}>
-        { creating ? spinner : newButton }
+      <View style={{flex:1,flexDirection:"row"}}>
+        <Link text = "New Bid" onPress={newItem}/>
         {myDocs}
         {allDocs}
         <Link text = "Signout" onPress={signout}/>

@@ -17,7 +17,6 @@ CREATE_BID_FAILURE
 } from '../constants';
 
 export function fetchBuyerBids(token) {
-
 	return {
 		[RSAA]: {
 			endpoint: `${BASE_URL}/bids`,
@@ -73,7 +72,12 @@ export function createBid(token) {
 			headers: {
 				'Content-type': 'application/json',
 				'Authorization': `Bearer ${token}`
-			}
+			},
+			body: JSON.stringify({
+  			bid: {
+  				date_issued: Date().toLocaleString()
+  			}
+  		})
 		}
 	};
 }

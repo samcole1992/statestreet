@@ -42,12 +42,13 @@ switch (action.type) {
       error: 'CREATE_BID_FAILURE',
       fetching: false
     }
-  case GET_BUYER_BIDS_SUCCESS:
+  case FETCHING:
     return {
       ...state,
       fetching: true
     }
   case GET_BUYER_BIDS_SUCCESS:
+  console.log(action);
     return {
       ...state,
       error: false,

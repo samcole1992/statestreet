@@ -13,12 +13,9 @@ import Link from '../components/Link'
 class SupplierSignupContainer extends Component {
   //some of this needs to be changed for iOs
 
-  static navigationOptions = ({navigation}) => {
-    // const buttonText = navigation.state.params ? navigation.state.params.buttonText : ''
-    const buttonText = ''
-    return {
-    }
-  }
+  static navigationOptions = ({navigation}) => ({
+      headerTitle: 'Sign Up as Supplier'
+    })
 
   componentDidMount() {
     this.props.navigation.setParams({dispatch: this.props.dispatch})

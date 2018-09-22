@@ -75,7 +75,12 @@ export function createOffer(token) {
 			headers: {
 				'Content-type': 'application/json',
 				'Authorization': `Bearer ${token}`
-			}
+			},
+			body: JSON.stringify({
+  			offer: {
+  				date_issued: Date().toLocaleString()
+  			}
+  		})
 		}
 	};
 }

@@ -12,12 +12,9 @@ import Link from '../components/Link'
 class BuyerSigninContainer extends Component {
   //some of this needs to be changed for iOs
 
-  static navigationOptions = ({navigation}) => {
-    // const buttonText = navigation.state.params ? navigation.state.params.buttonText : ''
-    const buttonText = ''
-    return {
-    }
-  }
+  static navigationOptions = ({navigation}) => ({
+      headerTitle: 'Sign In as Buyer'
+    })
 
   componentDidMount() {
     this.props.navigation.setParams({dispatch: this.props.dispatch})

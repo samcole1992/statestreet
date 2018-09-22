@@ -25,7 +25,12 @@ import DeviceInfo from 'react-native-device-info';
 
 class BuyerIndexBidsContainer extends Component {
 
+  static navigationOptions = ({navigation}) => ({
+      headerTitle: 'My Bids'
+    })
+
     componentDidMount() {
+      console.log(this.props.token +"BuyerIndexBidsContainer");
       this.props.fetchBuyerBids(this.props.token)
     }
 
@@ -44,7 +49,7 @@ class BuyerIndexBidsContainer extends Component {
   //   this.props.searchBids(values.term, this.props.token)
   // }
 
-  selectBid = (bids, index) => {
+  selectBid = (bid, index) => {
     const {navigate} = this.props.navigation
     console.log(this.props.bids);
     this.props.selectBid(bid, index) //save bid to redux for future use

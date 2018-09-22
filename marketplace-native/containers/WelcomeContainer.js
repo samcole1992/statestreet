@@ -10,6 +10,9 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 class WelcomeContainer extends Component {
 
+  static navigationOptions = ({navigation}) => ({
+      headerTitle: 'MarketPlace'
+    })
     onBuyerClick = () => {
       this.props.navigation.navigate('BuyerSignupContainer')
     }

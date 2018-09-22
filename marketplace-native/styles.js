@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     },
 
   navContainer:{
-    flexDirection: 'row',
+    flexDirection: 'column',
+    flex:1,
     backgroundColor: 'white',
     paddingBottom: 10,
     paddingTop: 10,

@@ -43,7 +43,7 @@ switch (action.type) {
       error: 'CREATE_OFFER_FAILURE',
       fetching: false
     }
-  case GET_SUPPLIER_OFFERS_SUCCESS:
+  case FETCHING:
     return {
       ...state,
       fetching: true

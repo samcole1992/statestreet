@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 import {
   AsyncStorage
 } from 'react-native';
-import { signout } from '../actions/auth'
+import { buyer_signout,supplier_signout } from '../actions/auth'
 import { createBid } from '../actions/bids'
 import { createOffer } from '../actions/offers'
 
@@ -55,7 +55,12 @@ class BottomNavContainer extends Component {
   onSignoutClick = () => {
   console.log('onSignoutClick');
   AsyncStorage.removeItem('marketplaceToken')
-  this.props.signout(this.props.token)
+  if (this.props.userType=="buyer") {
+    this.props.buyer_signout(this.props.token)
+
+  } else {
+    this.props.supplier_signout(this.props.token)
+  }
 }
 
   render() {
@@ -65,7 +70,7 @@ class BottomNavContainer extends Component {
         newItem={this.newItem}
         toUserItems={this.toUserItems}
         toAllItems={this.toAllItems}
-        signout = {this.signout}
+        signout = {this.onSignoutClick}
         userType = {this.props.userType}
       />
     )
@@ -85,7 +90,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     createBid: bindActionCreators(createBid, dispatch),
     createOffer: bindActionCreators(createOffer, dispatch),
-    signout: bindActionCreators(signout, dispatch)
+    buyer_signout: bindActionCreators(buyer_signout, dispatch),
+    supplier_signout: bindActionCreators(supplier_signout, dispatch)
+
 
   }
 }

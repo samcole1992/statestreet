@@ -45,9 +45,7 @@ const SupplierIndexOffers = (props) => {
 }
 
 SupplierIndexOffers.propTypes = {
-  offers: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
+  offers: PropTypes.array.isRequired
 }
 
 
