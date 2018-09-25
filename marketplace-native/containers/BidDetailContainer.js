@@ -35,7 +35,6 @@ class BidDetailContainer extends Component {
     })
     this.props.fetchProducts(this.props.bidId, this.props.token)
     .then((action)=> {
-      //if invoice has no items go straight to the new item form
       if(!action.payload.data.length){
         this.onCreateProduct().then(() => {
           navigate('EditProductContainer')
@@ -56,7 +55,7 @@ class BidDetailContainer extends Component {
   onSelectProduct = (product) => {
     console.log(product.id)
     const { navigate } = this.props.navigation
-    this.props.selectProduct(product) //save invoice to redux for future use
+    this.props.selectProduct(product) 
     navigate('EditProductContainer', {headerTitle: `${product.amount + product.name}`})
   }
 
