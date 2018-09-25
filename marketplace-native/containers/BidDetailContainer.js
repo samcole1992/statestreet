@@ -33,7 +33,7 @@ class BidDetailContainer extends Component {
     this.props.navigation.setParams({
       header: `Bid ${this.props.bid.id}`
     })
-    this.props.fetchProducts(this.props.bidId, this.props.token)
+    this.props.fetchProducts(this.props.bid, this.props.token)
     .then((action)=> {
       if(!action.payload.data.length){
         this.onCreateProduct().then(() => {
@@ -46,7 +46,7 @@ class BidDetailContainer extends Component {
 
   onCreateProduct = () => {
     const { navigate } = this.props.navigation
-    this.props.createProduct(this.props.bidId, this.props.token).then(() => {
+    this.props.createProduct(this.props.bid, this.props.token).then(() => {
       navigate('EditProductContainer')
     })
   }
@@ -55,7 +55,7 @@ class BidDetailContainer extends Component {
   onSelectProduct = (product) => {
     console.log(product.id)
     const { navigate } = this.props.navigation
-    this.props.selectProduct(product) 
+    this.props.selectProduct(product)
     navigate('EditProductContainer', {headerTitle: `${product.amount + product.name}`})
   }
 
@@ -120,7 +120,7 @@ const mapStateToProps = state => {
   }
 }
 
-
+// claimBid
 const mapDispatchToProps = {
   fetchProducts,
   createProduct,

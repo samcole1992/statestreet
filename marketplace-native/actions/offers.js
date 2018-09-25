@@ -12,9 +12,10 @@ GET_ALL_OFFERS_FAILURE,
 SELECT_OFFER,
 CREATING_OFFER,
 CREATE_OFFER_SUCCESS,
-CREATE_OFFER_FAILURE
-
-
+CREATE_OFFER_FAILURE,
+CLAIM_OFFER,
+FETCH_OFFER_SUCCESS,
+FETCH_OFFER_FAILURE
 
 } from '../constants';
 
@@ -35,7 +36,21 @@ export function fetchSupplierOffers(token) {
 		}
 	}
 }
-
+export function fetchOffer(id,token) {
+	return {
+		[RSAA]: {
+			endpoint: `${BASE_URL}/offers/${id}`,
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			},
+			types: [
+        FETCHING, FETCH_OFFER_SUCCESS, FETCH_OFFER_FAILURE
+			]
+		}
+	}
+}
 export function fetchAllOffers(token) {
 
 	return {
@@ -62,6 +77,15 @@ export function selectOffer(offer, index) {
 			payload
 		})
 	}
+}
+export function claimOffer(offer, index) {
+  console.log(offer);
+	// return (dispatch) => {
+	// 	dispatch({
+	// 		type: SELECT_BID,
+	// 		payload
+	// 	})
+	// }
 }
 export function createOffer(token) {
 

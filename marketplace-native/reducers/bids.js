@@ -11,7 +11,10 @@ GET_ALL_BIDS_FAILURE,
 SELECT_BID,
 CREATING_BID,
 CREATE_BID_SUCCESS,
-CREATE_BID_FAILURE
+CREATE_BID_FAILURE,
+CLAIM_BID,
+FETCH_BID_SUCCESS,
+FETCH_BID_FAILURE
 
 } from '../constants';
 
@@ -48,12 +51,10 @@ switch (action.type) {
       fetching: true
     }
   case GET_BUYER_BIDS_SUCCESS:
-  console.log(action);
     return {
       ...state,
       error: false,
       fetching: false,
-
       bids: action.payload.data
     }
   case GET_ALL_BIDS_SUCCESS:
@@ -61,7 +62,6 @@ switch (action.type) {
       ...state,
       error: false,
       fetching: false,
-
       bids: action.payload.data
     }
   case GET_BUYER_BIDS_FAILURE:
@@ -81,6 +81,18 @@ switch (action.type) {
     return {
       ...state,
       currentBid: action.payload,
+    }
+  case FETCH_BID_SUCCESS:
+    return {
+      ...state,
+      fetching: false,
+      currentBid: action.payload.data,
+    }
+  case FETCH_BID_FAILURE:
+    return {
+      ...state,
+      error: 'FETCH_BID_FAILURE',
+      fetching: false
     }
   default:
 

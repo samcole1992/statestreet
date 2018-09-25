@@ -11,8 +11,9 @@ GET_ALL_OFFERS_FAILURE,
 SELECT_OFFER,
 CREATING_OFFER,
 CREATE_OFFER_SUCCESS,
-CREATE_OFFER_FAILURE
-
+CREATE_OFFER_FAILURE,
+FETCH_OFFER_SUCCESS,
+FETCH_OFFER_FAILURE
 
 } from '../constants';
 
@@ -82,6 +83,18 @@ switch (action.type) {
     return {
       ...state,
       currentOffer: action.payload,
+    }
+  case FETCH_OFFER_SUCCESS:
+    return {
+      ...state,
+      fetching: false,
+      currentOffer: action.payload.data,
+    }
+  case FETCH_OFFER_FAILURE:
+    return {
+      ...state,
+      error: 'FETCH_OFFER_FAILURE',
+      fetching: false
     }
   default:
 

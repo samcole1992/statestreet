@@ -59,14 +59,12 @@ class EditProductContainer extends Component {
     })
   }
 
-
   render() {
     return(
       <EditProduct
         onSubmit= {this.handleSubmit}
         onDeleteProduct= {this.onDeleteProduct}
         currentProduct = {this.props.currentProduct}
-
 
       />
     )

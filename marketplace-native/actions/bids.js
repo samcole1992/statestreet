@@ -12,8 +12,10 @@ GET_ALL_BIDS_FAILURE,
 SELECT_BID,
 CREATING_BID,
 CREATE_BID_SUCCESS,
-CREATE_BID_FAILURE
-
+CREATE_BID_FAILURE,
+CLAIM_BID,
+FETCH_BID_SUCCESS,
+FETCH_BID_FAILURE
 } from '../constants';
 
 export function fetchBuyerBids(token) {
@@ -24,10 +26,25 @@ export function fetchBuyerBids(token) {
 			headers: {
 				'Content-type': 'application/json',
 				'Authorization': `Bearer ${token}`
-
 			},
 			types: [
 				FETCHING, GET_BUYER_BIDS_SUCCESS, GET_BUYER_BIDS_FAILURE
+			]
+		}
+	}
+}
+
+export function fetchBid(id,token) {
+	return {
+		[RSAA]: {
+			endpoint: `${BASE_URL}/bids/${id}`,
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			},
+			types: [
+        FETCHING, FETCH_BID_SUCCESS, FETCH_BID_FAILURE
 			]
 		}
 	}
@@ -59,6 +76,15 @@ export function selectBid(bid, index) {
 			payload
 		})
 	}
+}
+export function claimBid(bid, index) {
+  console.log(bid);
+	// return (dispatch) => {
+	// 	dispatch({
+	// 		type: SELECT_BID,
+	// 		payload
+	// 	})
+	// }
 }
 export function createBid(token) {
 
