@@ -56,6 +56,28 @@ const styles = StyleSheet.create({
     marginTop: 15,
     position:'relative',
   },
+  inputContainer: {
+    borderBottomWidth: 1,
+    borderColor: 'rgba(0, 0, 0, 0.3)',
+    paddingTop: 15,
+    paddingLeft: 10,
+    paddingBottom: 15,
+    position:'relative',
+    paddingVertical: 0,
+  },
+  textarea: {
+  fontSize: 17,
+  height: 150,
+  paddingBottom:0,
+  paddingTop:0,
+  textAlignVertical:"top"
+  },
+  input: {
+  height: 18,
+  fontSize: 17,
+  paddingBottom:0,
+  paddingTop:0
+},
   signupInput:{
     backgroundColor:'white',
   },

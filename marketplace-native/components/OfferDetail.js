@@ -13,12 +13,25 @@ const OfferDetail = (props) => {
     return <Loading/>
   }
 
-  else
+  else{
 
     return(
     <FlatList
      testID="OfferDetail"
-
+     ListHeaderComponent=
+       {<BOHeader
+         currentUser ={props.currentUser}
+         item = {props.offer}
+         createProduct= {props.createProduct}
+         claimOffer ={ props.claimOffer}
+         />}
+     ListFooterComponent=
+       {<BOFooter
+         currentUser ={props.currentUser}
+         item = {props.offer}
+         deleteOffer= {props.deleteOffer}
+         clearProducts= {props.clearProducts}
+         />}
        data={props.products}
 
        renderItem={({item, index}) => (
@@ -30,20 +43,19 @@ const OfferDetail = (props) => {
          containerStyle={styles.listContainerStyle}
          titleStyle={styles.listItemTitleStyle}
          title={item.attributes.amount + item.attributes.name}
-
          subtitle={item.id}
          subtitleStyle={{fontWeight:'normal'}}
          rightTitleStyle={{fontWeight:'bold'}}
          rightTitle={item.attributes.price}
          onPress={()=>{
-           props.onClick(item, index)
+           props.onSelectProduct(item)
          }}
          />
        )}
        keyExtractor={item => item.id}
 
     />
-  )
+  )}
 }
 
 OfferDetail.propTypes = {

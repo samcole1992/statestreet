@@ -145,19 +145,19 @@ export function deleteProduct(id, token) {
     }
   }
 }
-// export function clearProducts(item, token) {
-//
-// 	return {
-// 		[RSAA]:{
-// 			endpoint:`${BASE_URL}/products`,
-// 			method:'DELETE',
-// 			types:[
-// 				CLEARING_ALL_PRODUCTS,CLEAR_ALL_PRODUCTS_SUCCESS,CLEAR_ALL_PRODUCTS_FAILURE
-// 			],
-// 			headers: {
-// 				'Content-type': 'application/json',
-// 				'Authorization': `Bearer ${token}`
-// 			}
-// 		}
-// 	};
-// }
+export function clearProducts(item, token) {
+console.log(item);
+	// return {
+	// 	[RSAA]:{
+	// 		endpoint:`${BASE_URL}/products`,
+	// 		method:'DELETE',
+	// 		types:[
+	// 			CLEARING_ALL_PRODUCTS,CLEAR_ALL_PRODUCTS_SUCCESS,CLEAR_ALL_PRODUCTS_FAILURE
+	// 		],
+	// 		headers: {
+	// 			'Content-type': 'application/json',
+	// 			'Authorization': `Bearer ${token}`
+	// 		}
+	// 	}
+	// };
+}

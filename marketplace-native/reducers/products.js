@@ -75,8 +75,7 @@ switch (action.type) {
     return {
       ...state,
       fetching: false,
-      currentProduct: action.payload
-
+      currentProduct: action.payload.data
     }
   case CREATE_PRODUCT_FAILURE:
     return {

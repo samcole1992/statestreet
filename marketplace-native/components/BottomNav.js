@@ -6,7 +6,7 @@ import Link from './Link'
 
 import styles from '../styles'
 
-const BottomNav = ({newItem, toUserItems, toAllItems, creating, signout, userType}) => {
+const BottomNav = ({newItem, toUserItems,toMyOrders, toAllItems, creating, signout, userType}) => {
 
     let myDocs
     let allDocs
@@ -21,6 +21,8 @@ const BottomNav = ({newItem, toUserItems, toAllItems, creating, signout, userTyp
     return (
       <View style={{flex:1,flexDirection:"row"}}>
         <Link text = "New Bid" onPress={newItem}/>
+        <Link text = "My Orders" onPress={toMyOrders}/>
+
         {myDocs}
         {allDocs}
         <Link text = "Signout" onPress={signout}/>

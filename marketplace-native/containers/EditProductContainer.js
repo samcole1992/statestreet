@@ -39,6 +39,10 @@ class EditProductContainer extends Component {
     })
   }
 
+  onUpdateClick = () => {
+    this.props.dispatch(submit('EditProduct'))
+  }
+
   // To display selected taxes
 
 
@@ -62,6 +66,7 @@ class EditProductContainer extends Component {
   render() {
     return(
       <EditProduct
+      onUpdateClick = {this.onUpdateClick}
         onSubmit= {this.handleSubmit}
         onDeleteProduct= {this.onDeleteProduct}
         currentProduct = {this.props.currentProduct}

@@ -12,7 +12,8 @@ import OfferRestore from '../components/OfferRestore'
 
 import {
   fetchOffer,
-  claimOffer
+  claimOffer,
+  deleteOffer
 
 } from '../actions/offers'
 import {
@@ -52,7 +53,12 @@ class OfferDetailContainer extends Component {
       navigate('EditProductContainer')
     })
   }
-
+  onDeleteOffer = () => {
+    const { navigate } = this.props.navigation
+    this.props.deleteOffer(this.props.bid, this.props.token).then(() => {
+      this.props.navigation.pop()
+    })
+  }
 
   onSelectProduct = (product) => {
     console.log(product.id)
@@ -60,8 +66,7 @@ class OfferDetailContainer extends Component {
     this.props.selectProduct(product) //save invoice to redux for future use
     navigate('EditProductContainer', {headerTitle: `${product.amount + product.name}`})
   }
-  onClearProductsClick = () => {
-      console.log('on clear taxes click');
+  onClearProducts = () => {
       this.props.clearProducts(this.props.offer, this.props.token)
     }
   onErrorClick = () => {
@@ -93,10 +98,12 @@ class OfferDetailContainer extends Component {
     else {
       return (
         <OfferDetail
+        currentUser = {this.props.currentUser}
          products={ this.props.products }
          onCreateProduct={ this.onCreateProduct }
          onSelectProduct={ this.onSelectProduct }
          onClaimOffer={ this.onClaimOffer }
+         onDeleteOffer = {this.onDeleteOffer}
          onClearProducts = {this.onClearProducts}
          offer={this.props.currentOffer}
          loading={this.props.loading}
@@ -121,7 +128,8 @@ const mapStateToProps = state => {
     updated: state.offers.updated,
     updating: state.offers.updating,
     loading: state.products.loading,
-    token: state.auth.token
+    token: state.auth.token,
+    currentUser: state.auth.currentUser
   }
 }
 
@@ -132,7 +140,8 @@ const mapDispatchToProps = {
   selectProduct,
   fetchOffer,
   claimOffer,
-  clearProducts
+  clearProducts,
+  deleteOffer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferDetailContainer);

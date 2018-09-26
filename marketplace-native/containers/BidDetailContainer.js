@@ -12,13 +12,14 @@ import BidRestore from '../components/BidRestore'
 
 import {
   fetchBid,
-  claimBid
-
+  claimBid,
+  deleteBid
 } from '../actions/bids'
 import {
   fetchProducts,
   createProduct,
-  selectProduct
+  selectProduct,
+  clearProducts
 } from '../actions/products'
 import ErrorScreen from '../components/ErrorScreen'
 import Link from '../components/Link'
@@ -43,11 +44,21 @@ class BidDetailContainer extends Component {
     })
   }
 
+  onClearProducts= () => {
+      this.props.clearProducts(this.props.offer, this.props.token)
+    }
 
   onCreateProduct = () => {
     const { navigate } = this.props.navigation
     this.props.createProduct(this.props.bid, this.props.token).then(() => {
       navigate('EditProductContainer')
+    })
+  }
+
+  onDeleteBid = () => {
+    const { navigate } = this.props.navigation
+    this.props.deleteBid(this.props.bid, this.props.token).then(() => {
+      this.props.navigation.pop()
     })
   }
 
@@ -88,11 +99,13 @@ class BidDetailContainer extends Component {
     else {
       return (
         <BidDetail
+        currentUser = {this.props.currentUser}
          products={ this.props.products }
          onCreateProduct={ this.onCreateProduct }
          onSelectProduct={ this.onSelectProduct }
+         onClearProducts = {this.onClearProducts}
          onClaimBid={ this.onClaimBid }
-
+         onDeleteBid = {this.onDeleteBid}
          bid={this.props.currentBid}
          loading={this.props.loading}
        />
@@ -116,7 +129,8 @@ const mapStateToProps = state => {
     updated: state.bids.updated,
     updating: state.bids.updating,
     loading: state.products.loading,
-    token: state.auth.token
+    token: state.auth.token,
+    currentUser: state.auth.currentUser
   }
 }
 
@@ -126,7 +140,9 @@ const mapDispatchToProps = {
   createProduct,
   selectProduct,
   fetchBid,
-  claimBid
+  claimBid,
+  clearProducts,
+  deleteBid
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BidDetailContainer);

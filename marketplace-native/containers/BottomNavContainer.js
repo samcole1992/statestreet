@@ -52,6 +52,10 @@ class BottomNavContainer extends Component {
 
     }
   }
+  toMyOrders = ()=>{
+    this.props.navigation.navigate('IndexOrdersContainer')
+
+  }
   onSignoutClick = () => {
   console.log('onSignoutClick');
   AsyncStorage.removeItem('marketplaceToken')
@@ -68,6 +72,7 @@ class BottomNavContainer extends Component {
        <BottomNav
         creating={this.props.creatingItem}
         newItem={this.newItem}
+        toMyOrders = {this.toMyOrders}
         toUserItems={this.toUserItems}
         toAllItems={this.toAllItems}
         signout = {this.onSignoutClick}

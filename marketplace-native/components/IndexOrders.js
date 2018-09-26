@@ -7,32 +7,20 @@ import {Text, View, FlatList} from 'react-native';
 import Loading from '../components/Loading'
 import styles from '../styles'
 
-const BidDetail = (props) => {
+const IndexOrders = (props) => {
 
   if (props.fetching ) {
     return <Loading/>
   }
 
-  else{
+  else
 
     return(
     <FlatList
-     testID="BidDetail"
-       data={props.products}
-       ListHeaderComponent=
-         {<BOHeader
-           currentUser ={props.currentUser}
-           item = {props.bid}
-           createProduct= {props.createProduct}
-           claimItem ={ props.claimBid}
-           />}
-       ListFooterComponent=
-         {<BOFooter
-           currentUser ={props.currentUser}
-           item = {props.bid}
-           deleteItem = {props.deleteBid}
-           clearProducts= {props.clearProducts}
-           />}
+     testID="IndexOrders"
+
+       data={props.orders}
+
        renderItem={({item, index}) => (
        <ListItem
          underlayColor={'#dbdbdb'}
@@ -41,26 +29,24 @@ const BidDetail = (props) => {
          style={{flex:1}}
          containerStyle={styles.listContainerStyle}
          titleStyle={styles.listItemTitleStyle}
-         title={item.attributes.amount + item.attributes.name}
-
          subtitle={item.id}
          subtitleStyle={{fontWeight:'normal'}}
          rightTitleStyle={{fontWeight:'bold'}}
-         rightTitle={item.attributes.price}
+         rightTitle={item.attributes.total}
          onPress={()=>{
-           props.onSelectProduct(item)
+           props.onClick(item, index)
          }}
          />
        )}
        keyExtractor={item => item.id}
 
     />
-  )}
+  )
 }
 
-BidDetail.propTypes = {
-  products: PropTypes.array.isRequired
+IndexOrders.propTypes = {
+  orders: PropTypes.array.isRequired
 }
 
 
-export default BidDetail
+export default IndexOrders

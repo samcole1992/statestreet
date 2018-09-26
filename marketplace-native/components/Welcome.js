@@ -13,7 +13,9 @@ onSupplierClick
 
   return(
 
-    <View style={{padding: 6, flex: 3}} >
+    <View
+    testID="Welcome"
+    style={{padding: 6, flex: 3}} >
 
     <Button
     testID="BuyerButton"
