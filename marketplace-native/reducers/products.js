@@ -86,7 +86,7 @@ switch (action.type) {
     return {
       ...state,
       fetching: false,
-      products: state.products.push(action.payload.data)
+      products: state.products.concat(action.payload.data)
     }
   case UPDATE_PRODUCT_FAILURE:
   console.log(action);
