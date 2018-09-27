@@ -19,6 +19,7 @@ DELETE_PRODUCT_SUCCESS,
 DELETE_PRODUCT_FAILURE
 
 } from '../constants';
+
 const initialState = {
   error: false,
   fetching: false,
@@ -53,7 +54,6 @@ switch (action.type) {
       ...state,
       fetching: false,
       bids: []
-
     }
   case CLEAR_ALL_PRODUCTS_FAILURE:
     return {
@@ -64,20 +64,17 @@ switch (action.type) {
   case SELECT_PRODUCT:
     return {
       ...state,
-      currentProduct: action.payload,
-    }
-  case CREATING_PRODUCT:
-    return {
-      ...state,
-      fetching: true
+      currentProduct: action.payload
     }
   case CREATE_PRODUCT_SUCCESS:
+  console.log(action);
     return {
       ...state,
       fetching: false,
       currentProduct: action.payload.data
     }
   case CREATE_PRODUCT_FAILURE:
+  console.log(action);
     return {
       ...state,
       fetching: false,
@@ -85,12 +82,14 @@ switch (action.type) {
 
     }
   case UPDATE_PRODUCT_SUCCESS:
+  console.log(action);
     return {
       ...state,
-      fetching: false
-
+      fetching: false,
+      products: state.products.push(action.payload.data)
     }
   case UPDATE_PRODUCT_FAILURE:
+  console.log(action);
     return {
       ...state,
       fetching: false,
@@ -112,5 +111,8 @@ switch (action.type) {
       fetching: false,
       errors:'DELETE_PRODUCT_FAILURE'
     }
+  default:
+
+      return state
 }
 }

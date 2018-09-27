@@ -4,7 +4,7 @@ import { View, ScrollView, Text, TouchableOpacity, Dimensions, ActivityIndicator
 import { Card } from 'react-native-elements';
 import { Link } from './Link'
 
-import SignUpField from './SignUpField';
+import TextField from './TextField';
 
 import styles from '../styles.js';
 //This needs to be added to once auth/user is properly in place
@@ -46,7 +46,7 @@ const SupplierSignup = ({ onSignInClick, onContinueClick, authenticating}) => {
       <View>
         <Field
           name={'email'}
-          component={SignUpField}
+          component={TextField}
           placeholder={'email@example.com'}
         />
       </View>

@@ -76,7 +76,9 @@ const styles = StyleSheet.create({
   height: 18,
   fontSize: 17,
   paddingBottom:0,
-  paddingTop:0
+  paddingTop:0,
+  borderRadius:1,
+  borderColor: "black"
 },
   signupInput:{
     backgroundColor:'white',

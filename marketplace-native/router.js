@@ -11,6 +11,10 @@ import SupplierSignupContainer from './containers/SupplierSignupContainer';
 import BuyerIndexBidsContainer from './containers/BuyerIndexBidsContainer';
 import SupplierIndexOffersContainer from './containers/SupplierIndexOffersContainer';
 import WelcomeContainer from './containers/WelcomeContainer';
+import BidDetailContainer from './containers/BidDetailContainer';
+import OfferDetailContainer from './containers/OfferDetailContainer';
+import EditProductContainer from './containers/EditProductContainer';
+import IndexOrdersContainer from './containers/IndexOrdersContainer';
 
 
 export const createRootNavigator = (signedIn, userType) => {
@@ -50,5 +54,18 @@ const routes = {
   },
   SupplierSignupContainer: {
     screen: SupplierSignupContainer
+  },
+
+  BidDetailContainer: {
+    screen: BidDetailContainer
+  },
+  OfferDetailContainer: {
+    screen: OfferDetailContainer
+  },
+  IndexOrdersContainer: {
+    screen: IndexOrdersContainer
+  },
+  EditProductContainer: {
+    screen: EditProductContainer
   }
 }

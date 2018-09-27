@@ -7,10 +7,9 @@ import styles from '../styles';
 /**
 * to be wrapped with redux-form Field component
  */
-export default function SignUpField(props) {
+export default function TextField(props) {
 
   const { input, meta: { touched, error, warning }, ...inputProps } = props;
-console.log(inputProps+"SignUpField");
   return (
     <View style={[styles.signupInputContainer]}>
       <TextInput

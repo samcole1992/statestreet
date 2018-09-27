@@ -35,13 +35,7 @@ class BidDetailContainer extends Component {
       header: `Bid ${this.props.bid.id}`
     })
     this.props.fetchProducts(this.props.bid, this.props.token)
-    .then((action)=> {
-      if(!action.payload.data.length){
-        this.onCreateProduct().then(() => {
-          navigate('EditProductContainer')
-        })
-      }
-    })
+    
   }
 
   onClearProducts= () => {
@@ -99,14 +93,14 @@ class BidDetailContainer extends Component {
     else {
       return (
         <BidDetail
-        currentUser = {this.props.currentUser}
+          currentUser = {this.props.currentUser}
          products={ this.props.products }
          onCreateProduct={ this.onCreateProduct }
          onSelectProduct={ this.onSelectProduct }
          onClearProducts = {this.onClearProducts}
          onClaimBid={ this.onClaimBid }
          onDeleteBid = {this.onDeleteBid}
-         bid={this.props.currentBid}
+         bid={this.props.bid}
          loading={this.props.loading}
        />
      )
@@ -122,7 +116,6 @@ const mapStateToProps = state => {
   return {
     bid: state.bids.currentBid,
     bidId: state.bids.currentBid.id,
-    currentProduct: state.product.currentProduct, //for navigating back from items edit we need to be subscribed to changes
     products: state.products.products,
     bidError: state.bids.error,
     productError: state.products.error,

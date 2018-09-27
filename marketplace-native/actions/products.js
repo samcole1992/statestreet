@@ -76,7 +76,7 @@ if (item.type=="bid") {
 			endpoint:`${BASE_URL}/bids/${item.id}/products`,
 			method:'POST',
 			types:[
-				CREATING_PRODUCT,CREATE_PRODUCT_SUCCESS,CREATE_PRODUCT_FAILURE
+				FETCHING,CREATE_PRODUCT_SUCCESS,CREATE_PRODUCT_FAILURE
 			],
 			headers: {
 				'Content-type': 'application/json',
@@ -117,7 +117,7 @@ export function updateProduct(id, values, token) {
 			endpoint:`${BASE_URL}/products/${id}`,
 			method:'PATCH',
 			types:[
-				UPDATING_PRODUCT,UPDATE_PRODUCT_SUCCESS,UPDATE_PRODUCT_FAILURE
+				FETCHING,UPDATE_PRODUCT_SUCCESS,UPDATE_PRODUCT_FAILURE
 			],
 			headers: {
 				'Content-type': 'application/json',

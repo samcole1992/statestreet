@@ -113,5 +113,8 @@ switch (action.type) {
       fetching: false,
       errors:'DELETE_ORDER_FAILURE'
     }
+  default:
+
+      return state
 }
 }

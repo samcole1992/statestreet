@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {List, ListItem, Button} from 'react-native-elements'
 import {Text, View, FlatList} from 'react-native';
-// import SearchBar from './SearchBar'
-
+import BOHeader from './BOHeader'
+import BOFooter from './BOFooter'
 import Loading from '../components/Loading'
 import styles from '../styles'
 
 const OfferDetail = (props) => {
-
+console.log(props+'OfferDetail');
   if (props.fetching ) {
     return <Loading/>
   }
@@ -22,14 +22,14 @@ const OfferDetail = (props) => {
        {<BOHeader
          currentUser ={props.currentUser}
          item = {props.offer}
-         createProduct= {props.createProduct}
-         claimOffer ={ props.claimOffer}
+         createProduct= {props.onCreateProduct}
+         claimOffer ={ props.onClaimOffer}
          />}
      ListFooterComponent=
        {<BOFooter
          currentUser ={props.currentUser}
          item = {props.offer}
-         deleteOffer= {props.deleteOffer}
+         deleteOffer= {props.onDeleteOffer}
          clearProducts= {props.clearProducts}
          />}
        data={props.products}

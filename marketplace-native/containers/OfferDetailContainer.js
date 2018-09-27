@@ -36,14 +36,7 @@ class OfferDetailContainer extends Component {
       header: `Offer ${this.props.offer.id}`
     })
     this.props.fetchProducts(this.props.offer, this.props.token)
-    .then((action)=> {
-      //if invoice has no items go straight to the new item form
-      if(!action.payload.data.length){
-        this.onCreateProduct().then(() => {
-          navigate('EditProductContainer')
-        })
-      }
-    })
+    
   }
 
 
@@ -98,6 +91,7 @@ class OfferDetailContainer extends Component {
     else {
       return (
         <OfferDetail
+        offer={this.props.offer}
         currentUser = {this.props.currentUser}
          products={ this.props.products }
          onCreateProduct={ this.onCreateProduct }
@@ -105,7 +99,6 @@ class OfferDetailContainer extends Component {
          onClaimOffer={ this.onClaimOffer }
          onDeleteOffer = {this.onDeleteOffer}
          onClearProducts = {this.onClearProducts}
-         offer={this.props.currentOffer}
          loading={this.props.loading}
        />
      )
@@ -121,7 +114,6 @@ const mapStateToProps = state => {
   return {
     offer: state.offers.currentOffer,
     offerId: state.offers.currentOffer.id,
-    currentProduct: state.product.currentProduct, //for navigating back from items edit we need to be subscribed to changes
     products: state.products.products,
     offerError: state.offers.error,
     productError: state.products.error,

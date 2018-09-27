@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button } from 'react-native'
 import PropTypes from 'prop-types'
+import {bindActionCreators} from 'redux'
+
 import { connect } from 'react-redux'
 import EditProduct from '../components/EditProduct'
 import { updateProduct, deleteProduct } from '../actions/products'
@@ -14,10 +16,12 @@ class EditProductContainer extends Component {
 
   static navigationOptions = ({navigation}) => ({headerRight: <Link onPress={() => {
     navigation.state.params.dispatch(submit('EditProduct'))
-  }} text='Save'/>,headerTitle: navigation.state.params.headerTitle ? navigation.state.params.headerTitle : <ActivityIndicator size="small" color="#dbdbdb"/>});
+  }} text='Save'/>,
+  headerTitle: 'Product'});
 
   componentDidMount() {
-    this.props.navigation.setParams({dispatch: this.props.dispatch, headerTitle: `${this.props.currentProduct.amount} ${this.props.currentProduct.name}`})
+    console.log(this.props);
+    this.props.navigation.setParams({dispatch: this.props.dispatch, headerTitle: `Product`})
   }
 
 
@@ -86,12 +90,15 @@ const mapStateToProps = state => {
     token: state.auth.token
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    updateProduct: bindActionCreators(updateProduct, dispatch),
+    deleteProduct: bindActionCreators(deleteProduct, dispatch),
+    fetchOffer: bindActionCreators(fetchOffer, dispatch),
+    fetchBid: bindActionCreators(fetchBid, dispatch)
 
-const mapDispatchToProps = {
-  updateProduct,
-  deleteProduct,
-  fetchOffer,
-  fetchBid,
+  }
 }
 
 

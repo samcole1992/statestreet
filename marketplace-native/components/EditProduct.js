@@ -1,8 +1,8 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form'
-import {View, Text, Dimensions}
+import {View, Text, Dimensions} from 'react-native'
 import { Button } from 'react-native-elements'
-import SignUpField from './SignUpField';
+import TextField from './TextField';
 import LongField from './LongField';
 import NumberField from './NumberField';
 
@@ -41,11 +41,13 @@ const EditProduct = (props)=> {
         <Field
         name = "name"
         placeholder = "Product Name"
-        component = {SignUpField}
+        component = {TextField}
         />
         <Field
         name = "price"
         component = {NumberField}
+        placeholder = "$100"
+
         />
         <Field
         name = "description"

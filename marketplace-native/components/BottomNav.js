@@ -10,19 +10,23 @@ const BottomNav = ({newItem, toUserItems,toMyOrders, toAllItems, creating, signo
 
     let myDocs
     let allDocs
+    let newDoc
     if (userType=='buyer') {
+      newDoc = <Link text = "New Bid" onPress={newItem}/>
       myDocs = <Link text = "My Bids" onPress={toUserItems}/>
       allDocs = <Link text= "Open Offers" onPress={toAllItems}/>
     }
-    if (userType=='supplier') {
+    else {
+      newDoc = <Link text = "New Offer" onPress={newItem}/>
+
       myDocs = <Link text = "My Offers " onPress={toUserItems}/>
       allDocs = <Link text= "Open Bids" onPress={toAllItems}/>
     }
     return (
       <View style={{flex:1,flexDirection:"row"}}>
-        <Link text = "New Bid" onPress={newItem}/>
-        <Link text = "My Orders" onPress={toMyOrders}/>
 
+        {newDoc}
+        <Link text = "My Orders" onPress={toMyOrders}/>
         {myDocs}
         {allDocs}
         <Link text = "Signout" onPress={signout}/>

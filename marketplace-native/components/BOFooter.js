@@ -5,41 +5,33 @@ import {connect} from 'react-redux'
 
 
 const BOFooter = (props) => {
+  console.log(props);
   let footer
-  if (props.item.type=='bid'&&props.currentUser.type=="buyer") {
-    footer = <View style={{flex:1,flexDirection:"row"}}
-    testID = "BOFooter"
-    >
-    <Button
-      title = `Delete ${prop.item.type}`
-      onPress={()=>props.deleteItem()}
-    />
+  if ((props.item.type=='bid'&&props.currentUser.type=="buyer")||(props.item.type=='offer'&&props.currentUser.type=="supplier")) {
+    return (
+      <View style={{flex:1,flexDirection:"row"}}
+      testID = "BOFooter"
+      >
+      <Button
+        title = {`Delete ${props.item.type}`}
+        onPress={()=>props.deleteItem()}
+      />
 
-    <Button
-      title = "Clear Products"
-      onPress={()=>props.clearProducts()}
-    />
-    </View>
-  }
-  else if (props.item.type=='offer'&&props.currentUser.type=="supplier") {
-    footer = <View style={{flex:1,flexDirection:"row"}}
-    testID = "BOFooter"
-    >
-    <Button
-      title = `Delete ${prop.item.type}`
-      onPress={()=>props.deleteItem()}
-    />
+      <Button
+        title = "Clear Products"
+        onPress={()=>props.clearProducts()}
+      />
+      </View>
 
-    <Button
-      title = "Clear Products"
-      onPress={()=>props.clearProducts()}
-    />
-    </View>
+  )
   }
+  else{
   return (
-    {footer}
+  <View style={{flex:1,flexDirection:"row"}}
+  testID = "BOFooter"
+  >
 
-)
+  </View>)}
 
 }
 export default BOFooter

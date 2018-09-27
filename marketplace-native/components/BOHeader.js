@@ -3,6 +3,7 @@ import {View, Text} from 'react-native'
 import {Button} from 'react-native-elements'
 
 const BOHeader = (props) => {
+  console.log(props);
 let button
 if (props.item.type=='bid'&&props.currentUser.type=="buyer") {
   button = <Button

@@ -18,7 +18,7 @@ return (
       clearTextOnFocus={true}
       underlineColorAndroid="transparent"
       placeholderTextColor='rgba(0, 0, 0, 0.4)'
-      underlineColorAndroid='rgba(0,0,0,0)'
+      underlineColorAndroid='black'
     />
 
     {touched &&

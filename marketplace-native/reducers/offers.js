@@ -33,6 +33,7 @@ switch (action.type) {
       fetching: true
     }
   case CREATE_OFFER_SUCCESS:
+  console.log(action.payload.data);
     return {
       ...state,
       currentOffer: action.payload.data,

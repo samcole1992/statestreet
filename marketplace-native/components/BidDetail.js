@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {List, ListItem, Button} from 'react-native-elements'
 import {Text, View, FlatList} from 'react-native';
-// import SearchBar from './SearchBar'
+import BOHeader from './BOHeader'
+import BOFooter from './BOFooter'
 
 import Loading from '../components/Loading'
 import styles from '../styles'
