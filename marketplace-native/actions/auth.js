@@ -192,8 +192,6 @@ export function buyerSignup(email, guestToken) {
 }
 
 export function buyerSignin(email, password, token) {
-
-
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/buyer_signin`,

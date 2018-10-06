@@ -15,7 +15,9 @@ CREATE_OFFER_SUCCESS,
 CREATE_OFFER_FAILURE,
 CLAIM_OFFER,
 FETCH_OFFER_SUCCESS,
-FETCH_OFFER_FAILURE
+FETCH_OFFER_FAILURE,
+DELETE_OFFER_SUCCESS, 
+DELETE_OFFER_FAILURE
 
 } from '../constants';
 
@@ -107,4 +109,21 @@ export function createOffer(token) {
   		})
 		}
 	};
+}
+
+export function deleteOffer(id, token) {
+
+  return {
+    [RSAA]: {
+      endpoint: `${BASE_URL}/offers/${id}`,
+      method: 'DELETE',
+      types: [
+        FETCHING, DELETE_OFFER_SUCCESS, DELETE_OFFER_FAILURE
+      ],
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }
+  }
 }

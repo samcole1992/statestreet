@@ -12,7 +12,6 @@ const BuyerIndexBids = (props) => {
   if (props.fetching ) {
     return <Loading/>
   }
-
   else
 
     return(

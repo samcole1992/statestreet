@@ -15,7 +15,11 @@ CREATE_BID_SUCCESS,
 CREATE_BID_FAILURE,
 CLAIM_BID,
 FETCH_BID_SUCCESS,
-FETCH_BID_FAILURE
+FETCH_BID_FAILURE,
+DELETING_BID,
+DELETE_BID_SUCCESS,
+DELETE_BID_FAILURE
+
 } from '../constants';
 
 export function fetchBuyerBids(token) {
@@ -106,4 +110,21 @@ export function createBid(token) {
   		})
 		}
 	};
+}
+
+export function deleteBid(id, token) {
+
+  return {
+    [RSAA]: {
+      endpoint: `${BASE_URL}/bids/${id}`,
+      method: 'DELETE',
+      types: [
+        FETCHING, DELETE_BID_SUCCESS, DELETE_BID_FAILURE
+      ],
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }
+  }
 }

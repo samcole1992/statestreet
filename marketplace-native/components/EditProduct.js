@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements'
 import TextField from './TextField';
 import LongField from './LongField';
 import NumberField from './NumberField';
+import {connect} from 'react-redux';
 
 const validate = values => {
   const errors = {}
@@ -17,6 +18,7 @@ const validate = values => {
   if (!values.name) {
     errors.name = "Required Field"
   }
+  return errors;
 }
 const warn = values => {
 
@@ -28,9 +30,10 @@ const warn = values => {
   return warnings
 
 }
+const { height } = Dimensions.get('window')
 
 const EditProduct = (props)=> {
-  const { height } = Dimensions.get('window')
+
     return (
       <View style={{height, backgroundColor: 'white'}}>
         <Field
@@ -63,9 +66,24 @@ const EditProduct = (props)=> {
       </View>
     );
 }
+const mapStateToProps = (state) => {
+	//selector allows you to grab current field values from within the form, kind of like a dom selector
 
-export default reduxForm({
+  return {
+
+    initialValues: {
+			description: state.products.currentProduct.attributes.description,
+			price: state.products.currentProduct.attributes.price,
+			amount: state.products.currentProduct.attributes.amount,
+      name: state.products.currentProduct.attributes.name,
+
+		},
+  }
+}
+EditProduct= reduxForm({
   form: 'EditProduct',
   validate,
   warn
 })(EditProduct)
+
+export default connect(mapStateToProps)(EditProduct)

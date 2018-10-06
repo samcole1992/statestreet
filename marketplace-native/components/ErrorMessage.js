@@ -10,7 +10,7 @@ import {Button} from 'react-native-elements'
 
 import styles from '../styles'
 
-const ErrorMessage = ({message}) => <Text style={ styles.errorMessage }>{message}</Text>
+const ErrorMessage = ({message}) => <Text>{message}</Text>
 
 Error.propTypes = {
   message: PropTypes.string.isRequired

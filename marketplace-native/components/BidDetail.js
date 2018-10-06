@@ -9,7 +9,7 @@ import Loading from '../components/Loading'
 import styles from '../styles'
 
 const BidDetail = (props) => {
-
+console.log(props);
   if (props.fetching ) {
     return <Loading/>
   }
@@ -24,14 +24,14 @@ const BidDetail = (props) => {
          {<BOHeader
            currentUser ={props.currentUser}
            item = {props.bid}
-           createProduct= {props.createProduct}
+           createProduct= {props.onCreateProduct}
            claimItem ={ props.claimBid}
            />}
        ListFooterComponent=
          {<BOFooter
            currentUser ={props.currentUser}
            item = {props.bid}
-           deleteItem = {props.deleteBid}
+           deleteItem = {props.onDeleteBid}
            clearProducts= {props.clearProducts}
            />}
        renderItem={({item, index}) => (
