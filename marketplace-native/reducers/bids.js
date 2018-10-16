@@ -37,6 +37,7 @@ switch (action.type) {
       fetching: true
     }
   case CREATE_BID_SUCCESS:
+  console.log(action);
     return {
       ...state,
       currentBid: action.payload.data,
