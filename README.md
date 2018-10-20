@@ -7,5 +7,5 @@ This will require an React Native emulator environment to run.
 
 Run from the ios folder in XCode, or the Android folder in Android Studio
 
-Change the IP address in BASE_URL in ./constants.js to your local IP
+Change the IP address in BASE_URL in ./constants.js to your local IP 
 
